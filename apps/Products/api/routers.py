@@ -4,5 +4,5 @@ from apps.Products.api.views.product_views import ProductViewSet
 
 router = DefaultRouter()
 router.register(r'Products',ProductViewSet,basename = 'product')
-#router.register(r'MeasureUnit',MeasureUnitViewSet,basename = 'unit')
+router.register(r'MeasureUnit',MeasureUnitViewSet,basename = 'unit')
 urlpatterns = router.urls
