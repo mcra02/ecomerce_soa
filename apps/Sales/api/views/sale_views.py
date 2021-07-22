@@ -11,6 +11,8 @@ class SaleViewSet(Authentication,viewsets.ModelViewSet):
     serializer_class = SaleSerializer
     queryset = SaleSerializer.Meta.model.objects.filter(state = True)
     
+    
+    
     def get_query(self,pk=None):
         if pk is None:
             return self.get_serializer().Meta.model.objects.filter(is_active=True)
@@ -18,10 +20,7 @@ class SaleViewSet(Authentication,viewsets.ModelViewSet):
     
     def create(self,request):
         serializer = self.serializer_class(data = request.data)
-        
-        #print("dato {} ->".format(serializer))
         if serializer.is_valid():
-            #print(serializer.data)
             serializer.save()
             
             return Response({'message': 'venta registrada correctamente!'},status = status.HTTP_201_CREATED)
