@@ -3,11 +3,12 @@ from rest_framework import viewsets
 from rest_framework import status
 from apps.Users.models import User
 from rest_framework.response import Response
+from apps.Users.authentication_mixins import Authentication
 
 from apps.Users.api.serializers.user_serializers import UserSerializer
 from apps.Users.api.serializers.user_serializers import UserListSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(Authentication,viewsets.ModelViewSet):
     serializer_class = UserSerializer
     #queryset = UserSerializer.Meta.model.objects.filter(is_active=True)
     def list(self,request):

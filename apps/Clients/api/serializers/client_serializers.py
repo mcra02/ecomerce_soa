@@ -12,5 +12,5 @@ class ClientSerializer(serializers.ModelSerializer):
             'dni': instance.dni,
             'name': instance.name,
             'last_name': instance.last_name,
-            'direction': instance.direction,
+            'direction': instance.direction
         }

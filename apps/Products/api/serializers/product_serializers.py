@@ -13,5 +13,5 @@ class ProductSerializer(serializers.ModelSerializer):
             'stock': instance.stock,
             'price': instance.price,
             'brand': instance.brand,
-            'measure_unit': instance.measure_unit.description,
+            'measure_unit': instance.measure_unit.description
         }

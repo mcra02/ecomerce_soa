@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'apps.Products',
 ]
 
-TOKEN_EXPIRED_AFTER_SECONDS = 10
+TOKEN_EXPIRED_AFTER_SECONDS = 50000000
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

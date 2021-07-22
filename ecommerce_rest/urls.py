@@ -39,7 +39,7 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$',schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
        
@@ -47,6 +47,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('producto/', include('apps.Products.api.urls')),
     path('producto/', include('apps.Products.api.routers')),
+    #path('unidades_medida/', include('apps.Products.api.routers')),
     #path('cliente/', include('apps.Clients.api.urls')),
     path('cliente/', include('apps.Clients.api.routers')),
     path('venta/', include('apps.Sales.api.routers')),

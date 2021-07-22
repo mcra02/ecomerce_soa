@@ -11,14 +11,17 @@ from apps.Users.api.serializers.user_serializers import UserTokenSerializer
 
 # Create your views here.
 class UserToken(APIView):
-    def get(selft,request,*args,**kwargs):
-        username = request.GET.get('username')
+    def get(self,request,*args,**kwargs):
+        username = request.GET.get('username') 
         try:
-            user_token = Token.objects.get(user = self.user)
-            user = UserTokenSerializer(self.user)
+            user_token = Token.objects.get(
+                user = UserTokenSerializer().Meta.model.objects.filter(username = username).first()
+            )
+            #user_token = Token.objects.get(user = self.user)
+            #user = UserTokenSerializer(self.user)
             return Response({
-                'token': user_token.key,
-                'user': user.data
+                'token': user_token.key
+                #'user': user.data
             })
         except:
             return Response({
@@ -28,7 +31,7 @@ class UserToken(APIView):
 class Login(ObtainAuthToken):
     def post(self,request,*args,**kwargs):
         login_serializer = self.serializer_class(data = request.data, context = {'request': request})
-        #print('gaaaaa')
+        print('gaaaaa')
         if login_serializer.is_valid():
             user = login_serializer.validated_data['user']
             if user.is_active:

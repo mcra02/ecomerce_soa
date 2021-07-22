@@ -24,13 +24,15 @@ class ExpiringTokenAuthentication(TokenAuthentication):
 
     def token_expire_handler(self,token):
         is_expire = self.is_token_expired(token)
+        print(is_expire)
         if is_expire:
+            print('token_expire_handler error <-------------')
             self.expired = True
             user = token.user
             token.delete()
             token = self.get_model().objects.create(user = user)
             
-        return is_expire
+        return is_expire,token
 
     def authenticate_credentials(self,key):
         message,token,user = None,None,None
@@ -50,4 +52,4 @@ class ExpiringTokenAuthentication(TokenAuthentication):
             if is_expired:
                 message = 'Su token a expirado'
         
-        return (user, token, message,self.expired)
+        return (user,token,message,self.expired)

@@ -31,10 +31,9 @@ class Authentication(object):
         user = self.get_user(request)
         # found token in request
         if user is not None:
-            #return super().dispatch(request, *args, **kwargs)
             if type(user) == str:
                 response = Response({'error': user,'expired': self.user_token_expired},                            
-                            status = status.HTTP_400_BAD_REQUEST)
+                            status = status.HTTP_401_UNAUTHORIZED)
                 response.accepted_renderer = JSONRenderer()
                 response.accepted_media_type = 'application/json'
                 response.renderer_context = {}
