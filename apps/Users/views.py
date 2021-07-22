@@ -45,7 +45,7 @@ class Login(ObtainAuthToken):
                         'message':'Inicio de sesion Exitoso'
                     },status = status.HTTP_201_CREATED)
                 else:
-                    '''
+                    
                     token.delete()
                     token = Token.objects.create(user = user)
                     return Response({
@@ -53,11 +53,11 @@ class Login(ObtainAuthToken):
                         'user':user_serializer.data,
                         'message':'Inicio de sesion Exitoso'
                     },status = status.HTTP_201_CREATED)
-                    '''
-                    token.delete()
-                    return Response({
-                        'error': 'ya se ha iniciado sesion con este usuario'},
-                                    status = status.HTTP_409_CONFLICT)
+                    
+                    #token.delete()  
+                    #return Response({
+                    #    'error': 'ya se ha iniciado sesion con este usuario'},
+                    #                status = status.HTTP_409_CONFLICT)
             else:
                 return Response({'error': 'Este usuarios No puede iniciar sesion'},
                                 status = status.HTTP_401_UNAUTHORIZED)
