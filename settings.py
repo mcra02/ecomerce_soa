@@ -37,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
 
     # CORS HEADERS
     'corsheaders',
-
+    
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
@@ -54,7 +53,7 @@ INSTALLED_APPS = [
     'apps.Products',
 ]
 
-TOKEN_EXPIRED_AFTER_SECONDS = 50000000
+TOKEN_EXPIRED_AFTER_SECONDS = 10
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -160,23 +159,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS HEADERS
 CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_METHODS = [
-'DELETE',
-'GET',
-'OPTIONS',
-'PATCH',
-'POST',
-'PUT',
-]
-CORS_ALLOW_HEADERS = [
-'accept',
-'accept-encoding',
-'authorization',
-'content-type',
-'dnt',
-'origin',
-'user-agent',
-'x-csrftoken',
-'x-requested-with',
-]
