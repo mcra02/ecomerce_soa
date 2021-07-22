@@ -5,10 +5,11 @@ from rest_framework.response import Response
 
 
 from apps.base.api import GeneralListApiView
+from apps.Users.authentication_mixins import Authentication
 from apps.Products.api.serializers.product_serializers import ProductSerializer
 
 
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductViewSet(Authentication,viewsets.ModelViewSet):
     serializer_class = ProductSerializer
 
 

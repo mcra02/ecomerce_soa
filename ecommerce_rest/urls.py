@@ -21,7 +21,7 @@ from drf_yasg import openapi
 from django.contrib import admin
 from django.urls import path,include, re_path
 
-from apps.Users.views import Login,Logout
+from apps.Users.views import Login,Logout,UserToken
 
 
 schema_view = get_schema_view(
@@ -53,5 +53,6 @@ urlpatterns = [
     path('usuario/', include('apps.Users.api.routers')),
     path('logout/', Logout.as_view(), name = 'logout'),
     path('',Login.as_view(), name = 'login'),
+    path('refresh-token/',UserToken.as_view(),name = 'refresh_token'),
 
 ]
