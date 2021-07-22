@@ -7,8 +7,8 @@ from rest_framework import serializers
 class DetailSaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = DetailSale
-        #exclude = ('state','created_date','modified_date','delete_date')
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date','delete_date')
+        #fields = '__all__'
     
     def to_representation(self,instance):
         print(type(instance))
@@ -16,7 +16,7 @@ class DetailSaleSerializer(serializers.ModelSerializer):
             'precio': instance.precio,
             'cantidad': instance.cantidad,
             'sale': instance.sale.id,
-            'product_id': instance.product_id.id,
+            'product_id': instance.product_id.id
         }
     '''
     def create(self, validated_data):

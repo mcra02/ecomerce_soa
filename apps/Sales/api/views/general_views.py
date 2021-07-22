@@ -2,9 +2,10 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from apps.base.api import GeneralListApiView
+from apps.Users.authentication_mixins import Authentication
 from apps.Sales.api.serializers.general_serializers import DetailSaleSerializer
 
-class DetailSaleViewSet(viewsets.ModelViewSet):
+class DetailSaleViewSet(Authentication,viewsets.ModelViewSet):
     serializer_class = DetailSaleSerializer
     queryset = DetailSaleSerializer.Meta.model.objects.filter(state = True)
     

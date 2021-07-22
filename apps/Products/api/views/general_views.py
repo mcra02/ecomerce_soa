@@ -12,18 +12,19 @@ from apps.Products.api.serializers.general_serializers import MeasureUnitSeriali
 
 #trbajo de vistas con metodos  tipo listView -> listas de objetos
 # ademas lisAPIView esta hecho para reconocer solo el metodo GET
-# class MeasureUnitListAPIView(GeneralListApiView): 
+class MeasureUnitListAPIView(GeneralListApiView): 
     #es necesario crear un objeto tipo serializador el 
     #verificar que el nombre del objeto del serializador se especificamente el "serializer_class"
-    # serializer_class = MeasureUnitSerializer
+    serializer_class = MeasureUnitSerializer
     
     #
     #se realiza la consulta. esta busca al serializar para especificado
     # ademas el metodo valida la cantidad valores de llegada
     
     # se remplazara  generics.ListAPIView--> por 
-    
-   
+    def get_queryset(self):
+        return MeasureUnit.objects.filter(state=True)
+'''   
 class MeasureUnitViewSet(viewsets.ModelViewSet):
     serializer_class = MeasureUnitSerializer
 
@@ -43,9 +44,8 @@ class MeasureUnitViewSet(viewsets.ModelViewSet):
             detail_serializer.save()
             return Response({'message':'Producto creado correctamente!'}, status = status.HTTP_201_CREATED)
         return Response(detail_serializer.errors,status = status.HTTP_400_BAD_REQUEST)    
+'''
 
 
-
-    #def get_queryset(self):
-        #return MeasureUnit.objects.filter(state=True)
+    
     
